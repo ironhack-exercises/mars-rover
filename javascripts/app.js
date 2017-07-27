@@ -26,6 +26,12 @@ function moveForward(rover){
   if(rover.direction === "S") rover.y ++;
   if(rover.direction === "E") rover.x ++;
 
+  if(rover.x===-1 || rover.y ===-1){
+    console.log("Sorry, Rover can't go out of boundaries");
+    if (rover.x===-1) rover.x ++;
+    if (rover.y===-1) rover.y ++;
+  }
+
   rover.travelLog.push("[" + rover.x + "," + rover.y + "]");
 
   console.log("Rover is moving to " + rover.direction + ". Next position: [" +
