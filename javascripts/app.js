@@ -4,11 +4,11 @@ var rover = {
   direction: "N",
   x: 0,
   y: 0,
-  travelLog: ["[0,0]"]
+  travelLog: []
 };
 
 var grid = [
-  [null, "Potato", null, "Potato", null, null, null, null, null, null],
+  [null, null, null, "Potato", null, null, null, null, null, null],
   [null, "Potato", null, null, null, null, null, null, null, null],
   ["Matt Damon", null, null, null, null, null, null, null, "Potato", null],
   [null, "Potato", null, null, null, null, null, null, null, null],
@@ -125,26 +125,15 @@ function calculateNewDirection(currentDirection, turnTo){
 }
 
 function execListOfCommands (commands) {
+  rover.travelLog = [];
+  rover.travelLog.push("[" + rover.x + "," + rover.y + "]");
   for (var i=0; i<commands.length; i++){
-    switch (commands[i]) {
-      case "f":
-        moveForward(rover);
-        break;
-      case "b":
-        moveBackward(rover);
-        break;
-      case "l":
-        turnLeft(rover);
-        break;
-      case "r":
-        turnRight(rover);
-        break;
-      default:
-        console.log("Command NOT correct, you can only use 'f', 'b', 'r' and 'l'");
-        break;
-    }
+    if(commands[i] === "f") moveForward(rover);
+    else if (commands[i] === "b") moveBackward(rover);
+    else if (commands[i] === "l") turnLeft(rover);
+    else if (commands[i] === "r") turnRight(rover);
+    else console.log("Command NOT correct, you can only use 'f', 'b', 'r' and 'l'");
   }
-
   printMovements();
 }
 
