@@ -125,8 +125,8 @@ function calculateNewDirection(currentDirection, turnTo){
 }
 
 function execListOfCommands (commands) {
-  rover.travelLog = [];
-  rover.travelLog.push("[" + rover.x + "," + rover.y + "]");
+  if(rover.travelLog.length === 0)
+    rover.travelLog.push("[" + rover.x + "," + rover.y + "]");
   for (var i=0; i<commands.length; i++){
     if(commands[i] === "f") moveForward(rover);
     else if (commands[i] === "b") moveBackward(rover);
